@@ -1,9 +1,14 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import Dashboard from "./views/Dashboard"
 
-const App:React.FC = () => {
+const App: React.FC = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
