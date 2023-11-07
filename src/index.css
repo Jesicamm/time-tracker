@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --main-background: #f5f5f5;
-  --header-background: #d3d3d3;
+  --extra-light-grey: #f4f4f4;
+  --lighest-grey: #dbdbdb;
+  --salmon: #ff9984;
+  --light-grey: #b5b5b5;
+  --darkest-grey: #5d5d5d;
+  --dark-grey: #707070;
+  --extra-dark-grey: #3f3f3f;
+  --grey: #848484;
+  --teal: #50b59b;
 }
 
 #root {
@@ -20,8 +27,8 @@ html {
 body {
   margin: 0;
   height: 100%;
+  font-family: "PT Sans", sans-serif;
   display: flex;
   justify-content: center;
-  font-family: "Inter typeface family", sans-serif;
-  background-color: var(--main-background);
+  background-color: var(--extra-light-grey);
 }

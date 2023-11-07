@@ -1,5 +1,8 @@
-.header-content {
-  background-color: var(--header-background);
-  height: 10%;
-  width: 90%;
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.header-container .header-content {
+  grid-column-start: 2;
 }
