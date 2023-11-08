@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --extra-light-grey: #f4f4f4;
-  --lighest-grey: #dbdbdb;
-  --salmon: #ff9984;
-  --light-grey: #b5b5b5;
-  --darkest-grey: #5d5d5d;
-  --dark-grey: #707070;
-  --extra-dark-grey: #3f3f3f;
-  --grey: #848484;
-  --teal: #50b59b;
-}
 
 #root {
   width: 100%;
@@ -30,5 +19,5 @@ body {
   font-family: "PT Sans", sans-serif;
   display: flex;
   justify-content: center;
-  background-color: var(--extra-light-grey);
+  background-color: theme("colors.extraLightGrey");
 }
