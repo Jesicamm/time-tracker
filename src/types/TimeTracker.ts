@@ -8,14 +8,6 @@ export type UserInfo = {
 
 export type WorkStatus = "offline" | "online" | "paused" | ""
 
-export const emptyUserInfo: UserInfo = {
-  id: "",
-  workStatus: "",
-  firstName: "",
-  lastName: "",
-  workEntryIn: undefined,
-}
-
 type Item = {
   id: string
   name: string
@@ -23,4 +15,12 @@ type Item = {
 
 export type DropdownItems = Item & {
   subItem: Item[]
+}
+
+export const emptyUserInfo: UserInfo = {
+  id: "",
+  workStatus: "",
+  firstName: "",
+  lastName: "",
+  workEntryIn: undefined,
 }

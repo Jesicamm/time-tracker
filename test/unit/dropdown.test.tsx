@@ -22,7 +22,7 @@ describe("Dropdown component", () => {
     expect(SUT.getAnItem()).toBeInTheDocument()
   })
 
-  it("should displays <a> element if the element hasn't subgroup items", async () => {
+  it("should displays <a> element if the element hasn't got subgroup items", async () => {
     SUT.render()
 
     await userEvent.click(SUT.getTitle())
@@ -33,7 +33,7 @@ describe("Dropdown component", () => {
     expect(allBasicItems.length).toBe(1)
   })
 
-  it("should displays a button if the element has subgroup items", async () => {
+  it("should displays button element if the item list has subgroup items", async () => {
     SUT.render()
 
     await userEvent.click(SUT.getTitle())

@@ -1,7 +1,7 @@
-import Layout from "../components/layout/Layout"
+import Header from "../components/header/Header"
 
 const Dashboard: React.FC = () => {
-  return <Layout />
+  return <Header />
 }
 
 export default Dashboard
