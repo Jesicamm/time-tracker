@@ -11,7 +11,7 @@ export class TimeTracker {
   }
 
   public static async retrieveUserInfo(): Promise<UserInfo> {
-    const url = this.baseUrl + "/work-entries"
+    const url = `${this.baseUrl}/work-entries`
 
     let result: UserInfo
     try {

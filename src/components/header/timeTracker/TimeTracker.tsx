@@ -2,10 +2,14 @@ import { useEffect, useState } from "react"
 import Avatar from "./avatar/Avatar"
 import "./timeTracker.css"
 import { TimeTracker as TimeTrackerService } from "../../../service/TimeTracker"
-import { UserInfo, emptyUserInfo } from "../../../types/TimeTracker"
+import { DropdownItems, UserInfo, emptyUserInfo } from "../../../types/TimeTracker"
+import Dropdown from "./dropdown/Dropdown"
+import { items } from "./constants"
 
 const TimeTracker: React.FC = () => {
   const img: string = "/avatar.png"
+  const itemList: Array<DropdownItems> = items
+
   const [user, setUser] = useState<UserInfo>(emptyUserInfo)
 
   useEffect(() => {
@@ -17,9 +21,14 @@ const TimeTracker: React.FC = () => {
     setUser(response)
   }
 
+  const name = `${user.firstName} ${user.lastName}`
+
   return (
     <div className="time-tracker-container">
-      <Avatar img={img} status={user.workStatus} />
+      <div className="time-tracker-profile">
+        <Avatar img={img} status={user.workStatus} />
+        <Dropdown title={name} itemList={itemList} />
+      </div>
     </div>
   )
 }

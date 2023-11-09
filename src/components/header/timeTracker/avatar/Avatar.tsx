@@ -6,7 +6,6 @@ interface AvatarProps {
 }
 
 const Avatar: React.FC<AvatarProps> = ({ img, status }) => {
-
   const translations: Record<string, string> = {
     online: "bg-teal",
     offline: "bg-salmon",

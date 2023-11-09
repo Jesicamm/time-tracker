@@ -15,3 +15,12 @@ export const emptyUserInfo: UserInfo = {
   lastName: "",
   workEntryIn: undefined,
 }
+
+type Item = {
+  id: string
+  name: string
+}
+
+export type DropdownItems = Item & {
+  subItem: Item[]
+}

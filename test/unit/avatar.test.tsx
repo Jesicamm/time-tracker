@@ -44,7 +44,6 @@ class SUT {
   }
 
   static getUserImg(): HTMLElement {
-    return screen.getByRole("img", {name: "avatar"})
+    return screen.getByRole("img", { name: "avatar" })
   }
-
 }
