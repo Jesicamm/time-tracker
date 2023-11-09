@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Avatar from "./avatar/Avatar"
 import "./timeTracker.css"
 import { TimeTracker as TimeTrackerService } from "../../../service/TimeTracker"
-import { DropdownItems, UserInfo, emptyUserInfo } from "../../../types/TimeTracker"
+import { DropdownItems, UserInfo, WorkStatus, emptyUserInfo } from "../../../types/TimeTracker"
 import Dropdown from "./dropdown/Dropdown"
 import { items } from "./constants"
 import ButtonGroup from "./buttonGroup/ButtonGroup"
@@ -22,11 +22,21 @@ const TimeTracker: React.FC = () => {
     setUser(response)
   }
 
+  const handleClockOut = async () => {
+    const response: WorkStatus = await TimeTrackerService.clockOut(user.id)
+    setUser({ ...user, workStatus: response })
+  }
+
+  const handleClockIn = async () => {
+    const response: WorkStatus = await TimeTrackerService.clockIn(user.id)
+    setUser({ ...user, workStatus: response })
+  }
+
   const name = `${user.firstName} ${user.lastName}`
 
   return (
     <div className="time-tracker-container">
-      <ButtonGroup status={user.workStatus} />
+      <ButtonGroup status={user.workStatus} onClockOut={handleClockOut} onClockIn={handleClockIn} />
       <div className="time-tracker-profile">
         <Avatar img={img} status={user.workStatus} />
         <Dropdown title={name} itemList={itemList} />

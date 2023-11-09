@@ -17,9 +17,11 @@ export type DropdownItems = Item & {
   subItem: Item[]
 }
 
+export type WorkEntry = "workEntryIn" | "workEntryOut"
+
 export const emptyUserInfo: UserInfo = {
   id: "",
-  workStatus: "",
+  workStatus: "online",
   firstName: "",
   lastName: "",
   workEntryIn: undefined,
