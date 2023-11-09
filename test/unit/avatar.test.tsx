@@ -6,18 +6,18 @@ describe("Avatar component", () => {
   describe("Status", () => {
     it("should displays 'teal'color when user is online", () => {
       const online: WorkStatus = "online"
-      SUT.render(online)
+      AVATAR.render(online)
 
-      const span = SUT.getUserStatus()
+      const span = AVATAR.getUserStatus()
 
       expect(span.className).toMatch(/bg-teal/i)
     })
 
     it("should displays 'salmon' when user is offline", () => {
       const offline: WorkStatus = "offline"
-      SUT.render(offline)
+      AVATAR.render(offline)
 
-      const span = SUT.getUserStatus()
+      const span = AVATAR.getUserStatus()
 
       expect(span.className).toMatch(/bg-salmon/i)
     })
@@ -25,16 +25,16 @@ describe("Avatar component", () => {
 
   describe("Image", () => {
     it("should display the user image", () => {
-      SUT.render("online")
+      AVATAR.render("online")
 
-      const image = SUT.getUserImg()
+      const image = AVATAR.getUserImg()
 
       expect(image).toBeInTheDocument()
     })
   })
 })
 
-class SUT {
+class AVATAR {
   static render(status: WorkStatus) {
     render(<Avatar status={status} img="anImage" />)
   }

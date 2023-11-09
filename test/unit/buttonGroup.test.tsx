@@ -4,19 +4,19 @@ import ButtonGroup from "../../src/components/header/timeTracker/buttonGroup/But
 
 describe("ButtonGroup component", () => {
   it("should displays 'enter' button when status is offline", () => {
-    SUT.render("offline")
+    BUTTONGROUP.render("offline")
 
-    const enterButton = SUT.getStatusButton("Entrar")
+    const enterButton = BUTTONGROUP.getStatusButton("Entrar")
 
     expect(enterButton).toBeInTheDocument()
     expect(enterButton.className).toMatch(/teal/i)
   })
 
   it("should displays 'get out' and 'paused' buttons when status is online", () => {
-    SUT.render("online")
+    BUTTONGROUP.render("online")
 
-    const getOutButton = SUT.getStatusButton("Salir")
-    const pauseButton = SUT.getStatusButton("Pausar")
+    const getOutButton = BUTTONGROUP.getStatusButton("Salir")
+    const pauseButton = BUTTONGROUP.getStatusButton("Pausar")
 
     expect(getOutButton).toBeInTheDocument()
     expect(getOutButton.className).toMatch(/salmon/i)
@@ -25,10 +25,10 @@ describe("ButtonGroup component", () => {
   })
 
   it("should displays 'get out' and 'restart' buttons when status is paused", () => {
-    SUT.render("paused")
+    BUTTONGROUP.render("paused")
 
-    const getOutButton = SUT.getStatusButton("Salir")
-    const restartButton = SUT.getStatusButton("Reanudar")
+    const getOutButton = BUTTONGROUP.getStatusButton("Salir")
+    const restartButton = BUTTONGROUP.getStatusButton("Reanudar")
 
     expect(getOutButton).toBeInTheDocument()
     expect(getOutButton.className).toMatch(/salmon/i)
@@ -37,15 +37,15 @@ describe("ButtonGroup component", () => {
   })
 
   it("shouldn't display any button when we have no status", () => {
-    SUT.render("")
+    BUTTONGROUP.render("")
 
-    const button = SUT.getButton()
+    const button = BUTTONGROUP.getButton()
 
     expect(button).not.toBeInTheDocument()
   })
 })
 
-class SUT {
+class BUTTONGROUP {
   static render(status: WorkStatus) {
     render(<ButtonGroup status={status} />)
   }

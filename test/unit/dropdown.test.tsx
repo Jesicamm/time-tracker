@@ -5,45 +5,45 @@ import { DropdownItems } from "../../src/types/TimeTracker"
 
 describe("Dropdown component", () => {
   it("should displays dropdown title", () => {
-    SUT.render()
+    DROPDOWN.render()
 
-    const title = SUT.getTitle()
+    const title = DROPDOWN.getTitle()
 
     expect(title).toBeInTheDocument()
   })
 
   it("should open drowpdown when clicks button and displays itemList", async () => {
-    SUT.render()
+    DROPDOWN.render()
 
-    expect(SUT.getAnItem()).not.toBeInTheDocument()
+    expect(DROPDOWN.getAnItem()).not.toBeInTheDocument()
 
-    await userEvent.click(SUT.getTitle())
+    await userEvent.click(DROPDOWN.getTitle())
 
-    expect(SUT.getAnItem()).toBeInTheDocument()
+    expect(DROPDOWN.getAnItem()).toBeInTheDocument()
   })
 
   it("should displays <a> element if the element hasn't got subgroup items", async () => {
-    SUT.render()
+    DROPDOWN.render()
 
-    await userEvent.click(SUT.getTitle())
-    const aBasicItem = SUT.getBasicItem()
-    const allBasicItems = SUT.getAllBasicItems()
+    await userEvent.click(DROPDOWN.getTitle())
+    const aBasicItem = DROPDOWN.getBasicItem()
+    const allBasicItems = DROPDOWN.getAllBasicItems()
 
     expect(aBasicItem).toBeInTheDocument()
     expect(allBasicItems.length).toBe(1)
   })
 
   it("should displays button element if the item list has subgroup items", async () => {
-    SUT.render()
+    DROPDOWN.render()
 
-    await userEvent.click(SUT.getTitle())
-    const buttonItem = SUT.getButtonItem()
+    await userEvent.click(DROPDOWN.getTitle())
+    const buttonItem = DROPDOWN.getButtonItem()
 
     expect(buttonItem).toBeInTheDocument()
   })
 })
 
-class SUT {
+class DROPDOWN {
   static render() {
     render(<Dropdown title="title" itemList={this.itemList} />)
   }
