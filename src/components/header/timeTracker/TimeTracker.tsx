@@ -6,6 +6,7 @@ import { DropdownItems, UserInfo, WorkStatus, emptyUserInfo } from "../../../typ
 import Dropdown from "./dropdown/Dropdown"
 import { items } from "./constants"
 import ButtonGroup from "./buttonGroup/ButtonGroup"
+import Counter from "./counter/Counter"
 
 const TimeTracker: React.FC = () => {
   const img: string = "/avatar.png"
@@ -36,6 +37,7 @@ const TimeTracker: React.FC = () => {
 
   return (
     <div className="time-tracker-container">
+      <Counter rawDate={user.workEntryIn} status={user.workStatus} />
       <ButtonGroup status={user.workStatus} onClockOut={handleClockOut} onClockIn={handleClockIn} />
       <div className="time-tracker-profile">
         <Avatar img={img} status={user.workStatus} />
