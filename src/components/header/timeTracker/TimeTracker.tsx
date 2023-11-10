@@ -33,12 +33,21 @@ const TimeTracker: React.FC = () => {
     setUser({ ...user, workStatus: response })
   }
 
+  const handlePause = () => {
+    setUser({ ...user, workStatus: "paused" })
+  }
+
   const name = `${user.firstName} ${user.lastName}`
 
   return (
     <div className="time-tracker-container">
       <Counter rawDate={user.workEntryIn} status={user.workStatus} />
-      <ButtonGroup status={user.workStatus} onClockOut={handleClockOut} onClockIn={handleClockIn} />
+      <ButtonGroup
+        status={user.workStatus}
+        onClockOut={handleClockOut}
+        onClockIn={handleClockIn}
+        onPause={handlePause}
+      />
       <div className="time-tracker-profile">
         <Avatar img={img} status={user.workStatus} />
         <Dropdown title={name} itemList={itemList} />

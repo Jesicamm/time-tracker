@@ -47,7 +47,9 @@ describe("ButtonGroup component", () => {
 
 class BUTTONGROUP {
   static render(status: WorkStatus) {
-    render(<ButtonGroup status={status} onClockIn={() => {}} onClockOut={() => {}} />)
+    render(
+      <ButtonGroup status={status} onClockIn={() => {}} onClockOut={() => {}} onPause={() => {}} />
+    )
   }
 
   static getStatusButton(text: string): HTMLElement {

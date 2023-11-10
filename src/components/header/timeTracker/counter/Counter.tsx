@@ -18,8 +18,12 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
   }, [rawDate])
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout
+    const isRunning = handleStatus()
+    setIsRunning(isRunning)
+  }, [status])
 
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout
     if (isRunning) {
       intervalId = setInterval(() => {
         setTotal((prevTotal) => prevTotal + 1)
@@ -29,6 +33,16 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
     return () => clearInterval(intervalId)
   }, [isRunning])
 
+  const handleStatus = () => {
+    const statusMap = {
+      online: true,
+      offline: false,
+      paused: false,
+      "": false,
+    }
+    return statusMap[status]
+  }
+
   const retrieveInMilliseconds = () => {
     const date = new Date(rawDate!)
     const hours = date.getHours()
@@ -36,15 +50,6 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
     const seconds = date.getSeconds()
     const milliseconds = (hours * 3600 + minutes * 60 + seconds) * 1000
     return milliseconds
-  }
-
-  const startAndStop = () => {
-    setIsRunning(!isRunning)
-  }
-
-  const reset = () => {
-    setIsRunning(false)
-    setTotal(0)
   }
 
   const hours = Math.floor(time / 3600)
@@ -57,14 +62,6 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
         {hours.toString().padStart(2, "0")}:{minutes.toString().padStart(2, "0")}:
         {seconds.toString().padStart(2, "0")}
       </p>
-      <div className="stopwatch-buttons">
-        <button className="stopwatch-button" onClick={startAndStop}>
-          {isRunning ? "Stop" : "Start"}
-        </button>
-        <button className="stopwatch-button" onClick={reset}>
-          Reset
-        </button>
-      </div>
     </div>
   )
 }
