@@ -1,7 +1,7 @@
-import Header from "../components/header/Header"
+import TimeTracker from "../components/header/timeTracker/TimeTracker"
 
 const Dashboard: React.FC = () => {
-  return <Header />
+  return <TimeTracker />
 }
 
 export default Dashboard
