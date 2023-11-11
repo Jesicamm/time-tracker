@@ -23,7 +23,7 @@ describe("ButtonGroup component", () => {
     expect(exitButton).toBeInTheDocument()
     expect(exitButton.className).toMatch(/salmon/i)
     expect(pauseButton).toBeInTheDocument()
-    expect(pauseButton.className).toMatch(/darkGrey/i)
+    expect(pauseButton.className).toMatch(/lightGrey/i)
   })
 
   it("should display 'exit' and 'restart' buttons when status is paused", () => {
@@ -35,7 +35,7 @@ describe("ButtonGroup component", () => {
     expect(exitButton).toBeInTheDocument()
     expect(exitButton.className).toMatch(/salmon/i)
     expect(restartButton).toBeInTheDocument()
-    expect(restartButton.className).toMatch(/darkGrey/i)
+    expect(restartButton.className).toMatch(/lightGrey/i)
   })
 
   it("shouldn't display any button when we have no status", () => {

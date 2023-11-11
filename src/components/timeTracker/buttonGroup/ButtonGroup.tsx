@@ -19,15 +19,15 @@ const ButtonGroup: React.FC<ButtonGroupPropS> = ({
   const buttons: Record<string, JSX.Element> = {
     online: (
       <div>
-        <Button color="darkGrey" text="Pausar" onClick={onPause} />
-        <Button color="salmon" text="Salir" onClick={onClockOut} />
+        <Button color="bg-lightGrey" text="Pausar" onClick={onPause} />
+        <Button color="bg-salmon" text="Salir" onClick={onClockOut} />
       </div>
     ),
-    offline: <Button color="teal" text="Entrar" onClick={onClockIn} />,
+    offline: <Button color="bg-teal" text="Entrar" onClick={onClockIn} />,
     paused: (
       <div>
-        <Button color="darkGrey" text="Reanudar" onClick={onRestart} />
-        <Button color="salmon" text="Salir" onClick={onClockOut} />
+        <Button color="bg-lightGrey" text="Reanudar" onClick={onRestart} />
+        <Button color="bg-salmon" text="Salir" onClick={onClockOut} />
       </div>
     ),
     "": <></>,
