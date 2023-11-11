@@ -1,4 +1,5 @@
 import { Item } from "../../../../../types/TimeTracker"
+import Initials from "./initials/Initals"
 
 interface SubItemListProps {
   isOpen: boolean
@@ -21,7 +22,9 @@ const SubItemList: React.FC<SubItemListProps> = ({ isOpen, list }) => {
           <ul>
             {list.map((item) => (
               <li key={item.id} className="px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                <div className="left">{buildInitials(item.name)}</div>
+                <div className="left">
+                  <Initials initials={buildInitials(item.name)} />
+                </div>
                 <div className="right">
                   <div className="sub-item-data">
                     <p>{item.name}</p>

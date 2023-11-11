@@ -1,7 +1,7 @@
 interface ButtonProps {
   color: string
   text: string
-  onClick?: () => void
+  onClick: () => void
 }
 
 const Button: React.FC<ButtonProps> = ({ color, text, onClick }) => {

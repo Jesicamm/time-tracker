@@ -6,7 +6,7 @@
   border-radius: 20px;
 }
 
-.time-tracker-profile {
+.time-tracker-container .time-tracker-profile {
   display: flex;
   gap: 16px;
   justify-content: right;
