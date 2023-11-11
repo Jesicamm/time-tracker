@@ -18,7 +18,7 @@ const SubItemList: React.FC<SubItemListProps> = ({ isOpen, list }) => {
   return (
     <>
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-40 bg-white border border-gray-300 shadow-lg rounded">
+        <div className="absolute right-60 top-[-13px] mt-2 w-40 bg-white border border-gray-300 shadow-lg rounded">
           <ul>
             {list.map((item) => (
               <li key={item.id} className="px-3 py-2 hover:bg-gray-100 cursor-pointer">
