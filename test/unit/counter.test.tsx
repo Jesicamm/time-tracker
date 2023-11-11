@@ -11,7 +11,8 @@ describe("Counter Component", () => {
   afterEach(() => {
     vi.useRealTimers()
   })
-  it("renders initial time correctly", () => {
+
+  it("shoul render initial time correctly", () => {
     SUT.render()
 
     const initialTime = SUT.getTime()

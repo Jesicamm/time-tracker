@@ -17,14 +17,16 @@ const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
           {itemList.map(({ name, id, subItem }) => (
             <div className="py-1" key={id}>
               {subItem.length > 0 ? (
-                <button
-                  type="button"
-                  className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs  text-grey shadow-sm"
-                >
-                  <ArrowIcon position="right" />
+                <div className="relative inline-block text-left">
+                  <button
+                    type="button"
+                    className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs  text-grey shadow-sm"
+                  >
+                    <ArrowIcon position="right" />
 
-                  {name}
-                </button>
+                    {name}
+                  </button>
+                </div>
               ) : (
                 <a
                   href="#"

@@ -47,6 +47,7 @@ describe("Time Tracker component", () => {
 })
 
 class SUT {
+  static id: string = "anId"
   static async render() {
     await act(async () => {
       render(<TimeTracker />)
@@ -56,7 +57,6 @@ class SUT {
   static getButton(title: string): HTMLElement {
     return screen.getByRole("button", { name: title })
   }
-  static id: string = "anId"
   static userInfo(status: WorkStatus): UserInfo {
     return {
       id: this.id,

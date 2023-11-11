@@ -37,6 +37,10 @@ const TimeTracker: React.FC = () => {
     setUser({ ...user, workStatus: "paused" })
   }
 
+  const handleRestart = () => {
+    setUser({ ...user, workStatus: "online" })
+  }
+
   const name = `${user.firstName} ${user.lastName}`
 
   return (
@@ -47,6 +51,7 @@ const TimeTracker: React.FC = () => {
         onClockOut={handleClockOut}
         onClockIn={handleClockIn}
         onPause={handlePause}
+        onRestart={handleRestart}
       />
       <div className="time-tracker-profile">
         <Avatar img={img} status={user.workStatus} />

@@ -21,7 +21,7 @@ export type WorkEntry = "workEntryIn" | "workEntryOut"
 
 export const emptyUserInfo: UserInfo = {
   id: "",
-  workStatus: "online",
+  workStatus: "",
   firstName: "",
   lastName: "",
   workEntryIn: undefined,

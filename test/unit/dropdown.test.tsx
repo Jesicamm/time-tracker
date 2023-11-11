@@ -4,46 +4,46 @@ import userEvent from "@testing-library/user-event"
 import { DropdownItems } from "../../src/types/TimeTracker"
 
 describe("Dropdown component", () => {
-  it("should displays dropdown title", () => {
-    DROPDOWN.render()
+  it("should display dropdown title", () => {
+    SUT.render()
 
-    const title = DROPDOWN.getTitle()
+    const title = SUT.getTitle()
 
     expect(title).toBeInTheDocument()
   })
 
   it("should open drowpdown when clicks button and displays itemList", async () => {
-    DROPDOWN.render()
+    SUT.render()
 
-    expect(DROPDOWN.getAnItem()).not.toBeInTheDocument()
+    expect(SUT.getAnItem()).not.toBeInTheDocument()
 
-    await userEvent.click(DROPDOWN.getTitle())
+    await userEvent.click(SUT.getTitle())
 
-    expect(DROPDOWN.getAnItem()).toBeInTheDocument()
+    expect(SUT.getAnItem()).toBeInTheDocument()
   })
 
-  it("should displays <a> element if the element hasn't got subgroup items", async () => {
-    DROPDOWN.render()
+  it("should display <a> element if the element hasn't got subgroup items", async () => {
+    SUT.render()
 
-    await userEvent.click(DROPDOWN.getTitle())
-    const aBasicItem = DROPDOWN.getBasicItem()
-    const allBasicItems = DROPDOWN.getAllBasicItems()
+    await userEvent.click(SUT.getTitle())
+    const aBasicItem = SUT.getBasicItem()
+    const allBasicItems = SUT.getAllBasicItems()
 
     expect(aBasicItem).toBeInTheDocument()
     expect(allBasicItems.length).toBe(1)
   })
 
-  it("should displays button element if the item list has subgroup items", async () => {
-    DROPDOWN.render()
+  it("should display button element if the item list has subgroup items", async () => {
+    SUT.render()
 
-    await userEvent.click(DROPDOWN.getTitle())
-    const buttonItem = DROPDOWN.getButtonItem()
+    await userEvent.click(SUT.getTitle())
+    const buttonItem = SUT.getButtonItem()
 
     expect(buttonItem).toBeInTheDocument()
   })
 })
 
-class DROPDOWN {
+class SUT {
   static render() {
     render(<Dropdown title="title" itemList={this.itemList} />)
   }

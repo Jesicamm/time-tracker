@@ -4,20 +4,20 @@ import { WorkStatus } from "../../src/types/TimeTracker"
 
 describe("Avatar component", () => {
   describe("Status", () => {
-    it("should displays 'teal'color when user is online", () => {
+    it("should display 'teal'color when user is online", () => {
       const online: WorkStatus = "online"
-      AVATAR.render(online)
+      SUT.render(online)
 
-      const span = AVATAR.getUserStatus()
+      const span = SUT.getUserStatus()
 
       expect(span.className).toMatch(/bg-teal/i)
     })
 
-    it("should displays 'salmon' when user is offline", () => {
+    it("should display 'salmon' when user is offline", () => {
       const offline: WorkStatus = "offline"
-      AVATAR.render(offline)
+      SUT.render(offline)
 
-      const span = AVATAR.getUserStatus()
+      const span = SUT.getUserStatus()
 
       expect(span.className).toMatch(/bg-salmon/i)
     })
@@ -25,16 +25,16 @@ describe("Avatar component", () => {
 
   describe("Image", () => {
     it("should display the user image", () => {
-      AVATAR.render("online")
+      SUT.render("online")
 
-      const image = AVATAR.getUserImg()
+      const image = SUT.getUserImg()
 
       expect(image).toBeInTheDocument()
     })
   })
 })
 
-class AVATAR {
+class SUT {
   static render(status: WorkStatus) {
     render(<Avatar status={status} img="anImage" />)
   }

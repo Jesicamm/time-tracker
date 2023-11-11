@@ -6,9 +6,16 @@ interface ButtonGroupPropS {
   onClockOut: () => void
   onClockIn: () => void
   onPause: () => void
+  onRestart: () => void
 }
 
-const ButtonGroup: React.FC<ButtonGroupPropS> = ({ status, onClockOut, onClockIn, onPause }) => {
+const ButtonGroup: React.FC<ButtonGroupPropS> = ({
+  status,
+  onClockOut,
+  onClockIn,
+  onPause,
+  onRestart,
+}) => {
   const buttons: Record<string, JSX.Element> = {
     online: (
       <div>
@@ -19,8 +26,8 @@ const ButtonGroup: React.FC<ButtonGroupPropS> = ({ status, onClockOut, onClockIn
     offline: <Button color="teal" text="Entrar" onClick={onClockIn} />,
     paused: (
       <div>
-        <Button color="darkGrey" text="Reanudar" />
-        <Button color="salmon" text="Salir" />
+        <Button color="darkGrey" text="Reanudar" onClick={onRestart} />
+        <Button color="salmon" text="Salir" onClick={onClockOut} />
       </div>
     ),
     "": <></>,
