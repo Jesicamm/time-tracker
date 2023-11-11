@@ -1,4 +1,4 @@
-import Dropdown from "../../src/components/header/timeTracker/dropdown/Dropdown"
+import Dropdown from "../../src/components/timeTracker/dropdown/Dropdown"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { DropdownItems } from "../../src/types/TimeTracker"
@@ -41,6 +41,30 @@ describe("Dropdown component", () => {
 
     expect(buttonItem).toBeInTheDocument()
   })
+
+  it("should display sub items dropdown when clicks first dropdown button", async () => {
+    SUT.render()
+
+    await userEvent.click(SUT.getTitle())
+    const buttonItem = SUT.getButtonItem()
+    await userEvent.click(buttonItem)
+    const user = SUT.getSubItemsUser()
+    const accountName = SUT.getSubItemsName()
+
+    expect(user).toBeInTheDocument()
+    expect(accountName).toBeInTheDocument()
+  })
+
+  it("should display the initials of name account when uncollapsed sub items dropdown", async () => {
+    SUT.render()
+
+    await userEvent.click(SUT.getTitle())
+    const buttonItem = SUT.getButtonItem()
+    await userEvent.click(buttonItem)
+    const initials = SUT.getSubItemsInitials()
+
+    expect(initials).toBeInTheDocument()
+  })
 })
 
 class SUT {
@@ -68,6 +92,18 @@ class SUT {
     return screen.getByRole("button", { name: "an item" })
   }
 
+  static getSubItemsUser(): HTMLElement {
+    return screen.getByText("an user")
+  }
+
+  static getSubItemsName(): HTMLElement {
+    return screen.getByText("SubItem 1")
+  }
+
+  static getSubItemsInitials(): HTMLElement {
+    return screen.getByText("S1")
+  }
+
   private static itemList: Array<DropdownItems> = [
     {
       id: "1",
@@ -75,7 +111,9 @@ class SUT {
       subItem: [
         {
           id: "10",
-          name: "a subItem",
+          name: "SubItem 1",
+          user: "an user",
+          message: "a message",
         },
       ],
     },

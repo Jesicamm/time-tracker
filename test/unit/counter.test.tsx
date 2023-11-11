@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { vi } from "vitest"
-import Counter from "../../src/components/header/timeTracker/counter/Counter"
+import Counter from "../../src/components/timeTracker/counter/Counter"
 
 describe("Counter Component", () => {
   beforeEach(() => {

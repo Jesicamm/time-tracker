@@ -1,5 +1,5 @@
 import { act, render, screen } from "@testing-library/react"
-import TimeTracker from "../../src/components/header/timeTracker/TimeTracker"
+import TimeTracker from "../../src/components/timeTracker/TimeTracker"
 import { TimeTracker as TimeTrackerService } from "../../src/service/TimeTracker"
 import { vi } from "vitest"
 import { UserInfo, WorkStatus } from "../../src/types/TimeTracker"

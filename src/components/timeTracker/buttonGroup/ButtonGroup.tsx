@@ -1,5 +1,5 @@
-import { WorkStatus } from "../../../../types/TimeTracker"
-import Button from "../../../common/button/Button"
+import { WorkStatus } from "../../../types/TimeTracker"
+import Button from "../../common/button/Button"
 
 interface ButtonGroupPropS {
   status: WorkStatus

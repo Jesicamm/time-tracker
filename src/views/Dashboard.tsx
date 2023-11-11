@@ -1,4 +1,4 @@
-import TimeTracker from "../components/header/timeTracker/TimeTracker"
+import TimeTracker from "../components/timeTracker/TimeTracker"
 
 const Dashboard: React.FC = () => {
   return <TimeTracker />

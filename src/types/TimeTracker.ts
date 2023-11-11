@@ -8,9 +8,11 @@ export type UserInfo = {
 
 export type WorkStatus = "offline" | "online" | "paused" | ""
 
-type Item = {
+export type Item = {
   id: string
   name: string
+  user?: string
+  message?: string
 }
 
 export type DropdownItems = Item & {

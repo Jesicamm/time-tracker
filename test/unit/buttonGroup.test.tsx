@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { WorkStatus } from "../../src/types/TimeTracker"
-import ButtonGroup from "../../src/components/header/timeTracker/buttonGroup/ButtonGroup"
+import ButtonGroup from "../../src/components/timeTracker/buttonGroup/ButtonGroup"
 import { Mock, vi } from "vitest"
 import userEvent from "@testing-library/user-event"
 

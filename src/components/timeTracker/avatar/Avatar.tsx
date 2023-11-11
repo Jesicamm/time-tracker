@@ -1,4 +1,4 @@
-import { WorkStatus } from "../../../../types/TimeTracker"
+import { WorkStatus } from "../../../types/TimeTracker"
 
 interface AvatarProps {
   img: string

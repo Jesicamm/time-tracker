@@ -1,4 +1,4 @@
-import { DropdownItems } from "../../../types/TimeTracker"
+import { DropdownItems } from "../../types/TimeTracker"
 
 export const items: Array<DropdownItems> = [
   {
@@ -7,11 +7,15 @@ export const items: Array<DropdownItems> = [
     subItem: [
       {
         id: "10",
-        name: "sub item 1",
+        user: "Sesame HR",
+        name: "Sesame 1",
+        message: "Hoy llevas 00:00",
       },
       {
         id: "20",
-        name: "sub item 2",
+        user: "Sesame HR",
+        name: "Sesame 2",
+        message: "Hoy llevas 00:00",
       },
     ],
   },

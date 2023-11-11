@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import Avatar from "../../src/components/header/timeTracker/avatar/Avatar"
+import Avatar from "../../src/components/timeTracker/avatar/Avatar"
 import { WorkStatus } from "../../src/types/TimeTracker"
 
 describe("Avatar component", () => {

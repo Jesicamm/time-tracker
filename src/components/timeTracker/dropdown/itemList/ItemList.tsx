@@ -1,5 +1,7 @@
-import ArrowIcon from "../../../../../icons/arrowIcon"
-import { DropdownItems } from "../../../../../types/TimeTracker"
+import { useState } from "react"
+import ArrowIcon from "../../../../icons/arrowIcon"
+import { DropdownItems } from "../../../../types/TimeTracker"
+import SubItemList from "./subItemList/SubItemList"
 
 interface ItemListProps {
   isVisible: boolean
@@ -7,6 +9,12 @@ interface ItemListProps {
 }
 
 const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const openSubCategories = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <>
       {isVisible && (
@@ -17,15 +25,17 @@ const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
           {itemList.map(({ name, id, subItem }) => (
             <div className="py-1" key={id}>
               {subItem.length > 0 ? (
-                <div className="relative inline-block text-left">
+                <div className="">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs  text-grey shadow-sm"
+                    className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs text-grey shadow-sm"
+                    onClick={openSubCategories}
                   >
                     <ArrowIcon position="right" />
 
                     {name}
                   </button>
+                  <SubItemList isOpen={isOpen} list={subItem} />
                 </div>
               ) : (
                 <a

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { WorkStatus } from "../../../../types/TimeTracker"
+import { WorkStatus } from "../../../types/TimeTracker"
 
 interface CounterProps {
   rawDate?: Date
