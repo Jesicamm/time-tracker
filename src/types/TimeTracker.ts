@@ -4,6 +4,7 @@ export type UserInfo = {
   firstName: string
   lastName: string
   workEntryIn: Date | undefined
+  workedSeconds: number
   avatar: string
 }
 

@@ -84,6 +84,7 @@ class SUT {
       firstName: "aName",
       lastName: "aLastName",
       workEntryIn: new Date(),
+      workedSeconds: 43,
       avatar: "anAvatar",
     }
   }

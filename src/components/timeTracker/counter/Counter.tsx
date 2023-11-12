@@ -5,22 +5,19 @@ import { getHoursFromSeconds, getMinutesFromSeconds, getSeconds } from "../../..
 
 interface CounterProps {
   status: WorkStatus
+  workedSeconds: number
   rawDate?: Date
 }
 
-const Counter: React.FC<CounterProps> = ({ status, rawDate }) => {
+const Counter: React.FC<CounterProps> = ({ status, workedSeconds, rawDate }) => {
   const totalWorkHours: string = "08:00:00"
   const intervalRange: number = 1000
 
   const [isRunning, setIsRunning] = useState(false)
-  const { time, setInitialTime, setTime } = useTimeCounter(isRunning, intervalRange)
+  const { time, setInitialTime } = useTimeCounter(isRunning, intervalRange)
 
   useEffect(() => {
-    if (!rawDate) {
-      setTime(0)
-      return
-    }
-    const milliseconds = new Date(rawDate).getTime()
+    const milliseconds = new Date(rawDate!).getTime()
     setInitialTime(milliseconds)
   }, [rawDate])
 
@@ -39,15 +36,24 @@ const Counter: React.FC<CounterProps> = ({ status, rawDate }) => {
     return statusMap[status]
   }
 
-  const hours = getHoursFromSeconds(time)
-  const minutes = getMinutesFromSeconds(time)
-  const seconds = getSeconds(time)
+  const getTime = (time: number) => {
+    const result = {
+      hours: getHoursFromSeconds(time),
+      minutes: getMinutesFromSeconds(time),
+      seconds: getSeconds(time),
+    }
 
+    return result
+  }
+
+  const timeData = status == "online" ? getTime(time) : getTime(workedSeconds)
+
+  if (!status) return
   return (
     <div className="flex flex-row gap-x-1.5 text-xs text-darkGrey">
       <p className="font-semibold">
-        {hours.toString().padStart(2, "0")}:{minutes.toString().padStart(2, "0")}:
-        {seconds.toString().padStart(2, "0")}
+        {timeData.hours.toString().padStart(2, "0")}:{timeData.minutes.toString().padStart(2, "0")}:
+        {timeData.seconds.toString().padStart(2, "0")}
       </p>
       {status == "online" && (
         <>

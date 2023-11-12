@@ -1,5 +1,5 @@
 import { Item } from "../../../../../../types/TimeTracker"
-import Initials from "../../subItemList/initials/Initals"
+import Initials from "./initials/Initals"
 
 interface AccountListProps {
   isOpen: boolean

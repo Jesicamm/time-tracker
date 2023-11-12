@@ -1,8 +1,14 @@
+build:
+	npm install
+
 start:
 	npm run dev
 
-unit-all:
+test-all:
 	npm run test
+
+test-one:
+	npm run test $(ARGS)
 
 format: 
 	npm run format
@@ -13,4 +19,4 @@ lint-fix:
 before-commit:
 	make format
 	make lint-fix
-	make unit-all
+	make test-all

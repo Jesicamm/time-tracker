@@ -23,13 +23,11 @@ const TimeTracker: React.FC = () => {
 
   const handleClockOut = async () => {
     const result = await TimeTrackerService.clockOut(user.id)
-    if (result.workStatus == "") return
     setUser(result)
   }
 
   const handleClockIn = async () => {
     const result = await TimeTrackerService.clockIn(user.id)
-    if (result.workStatus == "") return
     setUser(result)
   }
 
@@ -45,7 +43,11 @@ const TimeTracker: React.FC = () => {
 
   return (
     <div className="time-tracker-container">
-      <Counter rawDate={user.workEntryIn} status={user.workStatus} />
+      <Counter
+        rawDate={user.workEntryIn}
+        status={user.workStatus}
+        workedSeconds={user.workedSeconds}
+      />
       <ButtonGroup
         status={user.workStatus}
         onClockOut={handleClockOut}

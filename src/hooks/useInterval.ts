@@ -21,6 +21,5 @@ export const useTimeCounter = (isRunning: boolean, rangeTime: number) => {
   return {
     time,
     setInitialTime,
-    setTime,
   }
 }

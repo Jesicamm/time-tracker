@@ -54,20 +54,17 @@ export class TimeTracker {
   private static buildUserInfo(data: JSONRecord): UserInfo {
     const employee = data.employee as JSONRecord
     const workEntryIn = data.workEntryIn as JSONRecord
-    let result = {
+
+    const result = {
       ...emptyUserInfo,
       id: String(employee.id),
       workStatus: employee.workStatus as WorkStatus,
       firstName: String(employee.firstName),
       lastName: String(employee.lastName),
+      workEntryIn: workEntryIn.date as Date,
+      workedSeconds: Number(data.workedSeconds),
     }
 
-    if (result.workStatus == "online") {
-      result = {
-        ...result,
-        workEntryIn: workEntryIn.date as Date,
-      }
-    }
     return result
   }
 

@@ -24,16 +24,28 @@ const ButtonGroup: React.FC<ButtonGroupPropS> = ({
       </div>
     )
   }
-  const buttons: Record<string, JSX.Element> = {
-    online: onlineState(),
-    offline: <Button color="bg-teal" text="Entrar" onClick={onClockIn} />,
-    paused: (
+
+  const offlineState = (): JSX.Element => {
+    return <Button color="bg-teal" text="Entrar" onClick={onClockIn} />
+  }
+
+  const pausedState = (): JSX.Element => {
+    return (
       <div className="grid grid-flow-col gap-2.5">
         <Button color="bg-lightGrey" text="Reanudar" onClick={onRestart} />
         <Button color="bg-salmon" text="Salir" onClick={onClockOut} />
       </div>
-    ),
-    "": <Button color="bg-lightGrey" isDisabled={true} text="" onClick={() => {}} />,
+    )
+  }
+
+  const noState = (): JSX.Element => {
+    return <Button color="bg-lightGrey" isDisabled={true} text="" onClick={() => {}} />
+  }
+  const buttons: Record<string, JSX.Element> = {
+    online: onlineState(),
+    offline: offlineState(),
+    paused: pausedState(),
+    "": noState(),
   }
 
   return <>{buttons[status]}</>
