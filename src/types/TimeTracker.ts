@@ -4,6 +4,7 @@ export type UserInfo = {
   firstName: string
   lastName: string
   workEntryIn: Date | undefined
+  avatar: string
 }
 
 export type WorkStatus = "offline" | "online" | "paused" | ""

@@ -6,13 +6,13 @@ interface AvatarProps {
 }
 
 const Avatar: React.FC<AvatarProps> = ({ img, status }) => {
-  const translations: Record<string, string> = {
+  const colors: Record<string, string> = {
     online: "teal",
     offline: "salmon",
     paused: "salmon",
   }
 
-  const color: string = translations[status]
+  const color: string = colors[status]
   return (
     <div className="relative">
       <img className="w-6 h-6 rounded-full" src={img} alt="avatar" />

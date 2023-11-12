@@ -2,17 +2,14 @@ import { useEffect, useState } from "react"
 import Avatar from "./avatar/Avatar"
 import "./timeTracker.css"
 import { TimeTracker as TimeTrackerService } from "../../service/TimeTracker"
-import { DropdownItems, UserInfo, WorkStatus } from "../../types/TimeTracker"
+import { UserInfo, WorkStatus } from "../../types/TimeTracker"
 import Dropdown from "../common/dropdown/Dropdown"
-import { items } from "./constants"
+import { defaultDropdownItems } from "./constants"
 import ButtonGroup from "./buttonGroup/ButtonGroup"
 import Counter from "./counter/Counter"
 import { emptyUserInfo } from "../../types/empty/emptyTimeTracker"
 
 const TimeTracker: React.FC = () => {
-  const img: string = "/avatar.png"
-  const itemList: Array<DropdownItems> = items
-
   const [user, setUser] = useState<UserInfo>(emptyUserInfo)
 
   useEffect(() => {
@@ -20,18 +17,18 @@ const TimeTracker: React.FC = () => {
   }, [])
 
   const retrieve = async () => {
-    const response = await TimeTrackerService.retrieveUserInfo()
-    setUser(response)
+    const user = await TimeTrackerService.retrieveUserInfo()
+    setUser(user)
   }
 
   const handleClockOut = async () => {
-    const response: WorkStatus = await TimeTrackerService.clockOut(user.id)
-    setUser({ ...user, workStatus: response })
+    const workStatus: WorkStatus = await TimeTrackerService.clockOut(user.id)
+    setUser({ ...user, workStatus: workStatus })
   }
 
   const handleClockIn = async () => {
-    const response: WorkStatus = await TimeTrackerService.clockIn(user.id)
-    setUser({ ...user, workStatus: response })
+    const workStatus: WorkStatus = await TimeTrackerService.clockIn(user.id)
+    setUser({ ...user, workStatus: workStatus })
   }
 
   const handlePause = () => {
@@ -54,9 +51,9 @@ const TimeTracker: React.FC = () => {
         onPause={handlePause}
         onRestart={handleRestart}
       />
-      <div className="h-6 w-0.5 bg-lightGrey"></div>
-      <Avatar img={img} status={user.workStatus} />
-      <Dropdown title={name} itemList={itemList} />
+      <hr className="h-6 w-0.5 bg-lightGrey" />
+      <Avatar img={user.avatar} status={user.workStatus} />
+      <Dropdown title={name} itemList={defaultDropdownItems} />
     </div>
   )
 }

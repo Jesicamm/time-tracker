@@ -1,5 +1,5 @@
 import Dropdown from "../../../src/components/common/dropdown/Dropdown"
-import { render, screen } from "@testing-library/react"
+import { act, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { DropdownItems } from "../../../src/types/TimeTracker"
 
@@ -16,8 +16,10 @@ describe("Dropdown component", () => {
     SUT.render()
 
     expect(SUT.getAnItem()).not.toBeInTheDocument()
+    await act(async() =>{
 
-    await userEvent.click(SUT.getTitle())
+      await userEvent.click(SUT.getTitle())
+    })
 
     expect(SUT.getAnItem()).toBeInTheDocument()
   })
@@ -77,7 +79,7 @@ class SUT {
   }
 
   static getAnItem(): HTMLElement | null {
-    return screen.queryByText("an item")
+    return screen.queryByText("Mis Cuentas")
   }
 
   static getBasicItem(): HTMLElement {
@@ -89,7 +91,7 @@ class SUT {
   }
 
   static getButtonItem(): HTMLElement {
-    return screen.getByRole("button", { name: "an item" })
+    return screen.getByRole("button", { name: "Mis Cuentas" })
   }
 
   static getSubItemsUser(): HTMLElement {
@@ -107,7 +109,7 @@ class SUT {
   private static itemList: Array<DropdownItems> = [
     {
       id: "1",
-      name: "an item",
+      name: "Mis Cuentas",
       subItem: [
         {
           id: "10",

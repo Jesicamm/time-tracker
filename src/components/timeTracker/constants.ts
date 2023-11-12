@@ -1,6 +1,6 @@
 import { DropdownItems } from "../../types/TimeTracker"
 
-export const items: Array<DropdownItems> = [
+export const defaultDropdownItems: Array<DropdownItems> = [
   {
     id: "1",
     name: "Mis Cuentas",

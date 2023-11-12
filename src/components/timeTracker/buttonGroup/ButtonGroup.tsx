@@ -16,13 +16,16 @@ const ButtonGroup: React.FC<ButtonGroupPropS> = ({
   onPause,
   onRestart,
 }) => {
-  const buttons: Record<string, JSX.Element> = {
-    online: (
+  const onlineState = (): JSX.Element => {
+    return (
       <div className="grid grid-flow-col gap-2.5">
         <Button color="bg-lightGrey" text="Pausar" onClick={onPause} />
         <Button color="bg-salmon" text="Salir" onClick={onClockOut} />
       </div>
-    ),
+    )
+  }
+  const buttons: Record<string, JSX.Element> = {
+    online: onlineState(),
     offline: <Button color="bg-teal" text="Entrar" onClick={onClockIn} />,
     paused: (
       <div className="grid grid-flow-col gap-2.5">

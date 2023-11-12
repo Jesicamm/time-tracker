@@ -1,7 +1,6 @@
-import { useState } from "react"
-import ArrowIcon from "../../../icons/arrowIcon"
 import { DropdownItems } from "../../../../types/TimeTracker"
-import SubItemList from "./subItemList/SubItemList"
+import AccountItem from "./accountItem/AccountItem"
+import MenuItem from "./menuItem/MenuItem"
 
 interface ItemListProps {
   isVisible: boolean
@@ -9,12 +8,6 @@ interface ItemListProps {
 }
 
 const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-
-  const openSubCategories = () => {
-    setIsOpen(!isOpen)
-  }
-
   return (
     <>
       {isVisible && (
@@ -24,27 +17,10 @@ const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
         >
           {itemList.map(({ name, id, subItem }) => (
             <div className="py-1" key={id}>
-              {subItem.length > 0 ? (
-                <>
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs text-grey"
-                    onClick={openSubCategories}
-                  >
-                    <ArrowIcon position="right" customStyle="absolute left-1" />
-
-                    {name}
-                  </button>
-                  <SubItemList isOpen={isOpen} list={subItem} />
-                </>
+              {name == "Mis Cuentas" ? (
+                <AccountItem name={name} list={subItem} />
               ) : (
-                <a
-                  href="#"
-                  className="text-grey block px-4 py-2 text-xs text-center"
-                  role="menuitem"
-                >
-                  {name}
-                </a>
+                <MenuItem name={name} />
               )}
             </div>
           ))}

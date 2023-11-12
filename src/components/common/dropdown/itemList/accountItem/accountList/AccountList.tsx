@@ -1,16 +1,16 @@
-import { Item } from "../../../../../types/TimeTracker"
-import Initials from "./initials/Initals"
+import { Item } from "../../../../../../types/TimeTracker"
+import Initials from "../../subItemList/initials/Initals"
 
-interface SubItemListProps {
+interface AccountListProps {
   isOpen: boolean
   list: Array<Item>
 }
 
-const SubItemList: React.FC<SubItemListProps> = ({ isOpen, list }) => {
+const AccountList: React.FC<AccountListProps> = ({ isOpen, list }) => {
   const buildInitials = (text: string) => {
-    const words = text.split(" ")
-    const firstInitial = words[0].charAt(0)
-    const number = words[1].toString()
+    const splitted = text.split(" ")
+    const firstInitial = splitted[0].charAt(0)
+    const number = splitted[1].toString()
 
     return firstInitial + number
   }
@@ -45,4 +45,4 @@ const SubItemList: React.FC<SubItemListProps> = ({ isOpen, list }) => {
   )
 }
 
-export default SubItemList
+export default AccountList

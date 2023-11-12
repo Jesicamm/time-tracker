@@ -6,4 +6,5 @@ export const emptyUserInfo: UserInfo = {
   firstName: "",
   lastName: "",
   workEntryIn: undefined,
+  avatar: "/avatar.png",
 }

@@ -56,6 +56,7 @@ export class TimeTracker {
     const workEntryIn = data.workEntryIn as JSONRecord
 
     return {
+      ...emptyUserInfo,
       id: String(employee.id),
       workStatus: employee.workStatus as WorkStatus,
       firstName: String(employee.firstName),
