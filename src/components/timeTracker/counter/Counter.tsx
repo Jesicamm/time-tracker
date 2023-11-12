@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from "react"
 import { WorkStatus } from "../../../types/TimeTracker"
+import { useTimeCounter } from "../../../hooks/useInterval"
+import {
+  getHoursInMilliseconds,
+  getMilliseconds,
+  getMinutesInMilliSeconds,
+  getSecondsInMilliSeconds,
+} from "../../../helpers/dateFormat"
 
 interface CounterProps {
-  rawDate?: Date
   status: WorkStatus
+  rawDate?: Date
 }
 
-const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
-  const [isRunning, setIsRunning] = useState(false)
-  const [time, setTotal] = useState(0)
+const Counter: React.FC<CounterProps> = ({ status, rawDate }) => {
   const totalWorkHours: string = "08:00:00"
+  const intervalRange: number = 1000
+
+  const [isRunning, setIsRunning] = useState(false)
+  const { time, setInitialTime } = useTimeCounter(isRunning, intervalRange)
 
   useEffect(() => {
     if (rawDate) {
-      const milliseconds = retrieveInMilliseconds()
-      setTotal(Math.floor(milliseconds / 1000))
+      const milliseconds = getMilliseconds(rawDate)
+      setInitialTime(milliseconds)
     }
   }, [rawDate])
 
@@ -22,17 +31,6 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
     const isRunning = handleStatus()
     setIsRunning(isRunning)
   }, [status])
-
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout
-    if (isRunning) {
-      intervalId = setInterval(() => {
-        setTotal((prevTotal) => prevTotal + 1)
-      }, 1000)
-    }
-
-    return () => clearInterval(intervalId)
-  }, [isRunning])
 
   const handleStatus = () => {
     const statusMap = {
@@ -44,18 +42,9 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
     return statusMap[status]
   }
 
-  const retrieveInMilliseconds = () => {
-    const date = new Date(rawDate!)
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-    const milliseconds = (hours * 3600 + minutes * 60 + seconds) * 1000
-    return milliseconds
-  }
-
-  const hours = Math.floor(time / 3600)
-  const minutes = Math.floor((time % 3600) / 60)
-  const seconds = time % 60
+  const hours = getHoursInMilliseconds(time)
+  const minutes = getMinutesInMilliSeconds(time)
+  const seconds = getSecondsInMilliSeconds(time)
 
   return (
     <div className="flex flex-row gap-x-1.5 text-xs text-darkGrey">
