@@ -19,7 +19,7 @@ const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
     <>
       {isVisible && (
         <div
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-lightGrey shadow-lg"
+          className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-lighestGrey shadow-lg"
           aria-labelledby="menu-button"
         >
           {itemList.map(({ name, id, subItem }) => (
@@ -28,10 +28,10 @@ const ItemList: React.FC<ItemListProps> = ({ isVisible, itemList }) => {
                 <>
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs text-grey shadow-sm"
+                    className="inline-flex w-full justify-center items-center gap-x-1.5 px-3 py-2 text-xs text-grey"
                     onClick={openSubCategories}
                   >
-                    <ArrowIcon position="right" />
+                    <ArrowIcon position="right" customStyle="absolute left-1" />
 
                     {name}
                   </button>

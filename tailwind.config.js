@@ -15,6 +15,7 @@ export default {
       extraDarkGrey: "#3f3f3f",
       grey: "#848484",
       teal: "#50b59b",
+      lightTeal: "#d8f2ec"
     },
   },
   plugins: [],

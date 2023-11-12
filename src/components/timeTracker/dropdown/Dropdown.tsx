@@ -20,7 +20,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, itemList }) => {
       <div>
         <button
           type="button"
-          className="inline-flex gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold"
+          className="inline-flex gap-x-1.5 px-3 py-2 text-sm text-extraDarkGrey font-semibold"
           onClick={openDropdown}
         >
           {title}

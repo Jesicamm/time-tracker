@@ -19,20 +19,23 @@ const SubItemList: React.FC<SubItemListProps> = ({ isOpen, list }) => {
     <>
       {isOpen && (
         <div
-          className="absolute right-60 top-[-13px] z-10 mt-2 w-56 bg-white shadow-lg divide-y divide-lightGrey rounded origin-top-right"
+          className="absolute transform translate-x-[-105%] top-[-13px] z-10 mt-2 w-56 bg-white shadow-lg divide-y divide-lighestGrey rounded origin-top-right"
           aria-labelledby="submenu-button"
         >
           {list.map((item) => (
-            <div key={item.id} className="py-1">
-              <div className="left">
+            <div
+              key={item.id}
+              className="py-1.5 grid grid-flow-col justify-start gap-4 p-4 items-center hover:bg-lightTeal cursor-pointer"
+            >
+              <div>
                 <Initials initials={buildInitials(item.name)} />
               </div>
-              <div className="right">
-                <div className="sub-item-data">
-                  <a className="text-grey text-xs">{item.name}</a>
-                  <a className="text-grey text-xs">{item.user}</a>
+              <div className="grid grid-flow-row">
+                <div className="grid grid-flow-col gap-1">
+                  <a className="font-semibold text-darkestGrey text-xs">{item.name}</a>
+                  <a className="text-darkestGrey text-xs">{item.user}</a>
                 </div>
-                <a className="text-grey text-xs">{item.message}</a>
+                <a className="text-lightGrey text-xs">{item.message}</a>
               </div>
             </div>
           ))}

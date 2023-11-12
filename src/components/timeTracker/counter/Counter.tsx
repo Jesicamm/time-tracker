@@ -9,6 +9,7 @@ interface CounterProps {
 const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
   const [isRunning, setIsRunning] = useState(false)
   const [time, setTotal] = useState(0)
+  const totalJournal: string = "08:00:00"
 
   useEffect(() => {
     if (rawDate) {
@@ -57,11 +58,13 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
   const seconds = time % 60
 
   return (
-    <div className="stopwatch-container text-sm text-darkGrey font-semibold">
-      <p className="stopwatch-time">
+    <div className="flex flex-row gap-x-1.5 text-xs text-darkGrey">
+      <p className="font-semibold">
         {hours.toString().padStart(2, "0")}:{minutes.toString().padStart(2, "0")}:
         {seconds.toString().padStart(2, "0")}
       </p>
+      <p>/</p>
+      <p>{totalJournal}</p>
     </div>
   )
 }

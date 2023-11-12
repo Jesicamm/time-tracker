@@ -3,11 +3,14 @@
   align-items: center;
   width: fit-content;
   background-color: theme("colors.lighestGrey");
-  border-radius: 20px;
+  gap: 20px;
+  padding: 5px 15px;
+  border-radius: 35px;
 }
 
 .time-tracker-container .time-tracker-profile {
   display: flex;
   gap: 16px;
   justify-content: right;
+  align-items: center;
 }

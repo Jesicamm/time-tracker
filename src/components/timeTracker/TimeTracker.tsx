@@ -53,10 +53,9 @@ const TimeTracker: React.FC = () => {
         onPause={handlePause}
         onRestart={handleRestart}
       />
-      <div className="time-tracker-profile">
-        <Avatar img={img} status={user.workStatus} />
-        <Dropdown title={name} itemList={itemList} />
-      </div>
+      <div className="h-6 w-0.5 bg-lightGrey"></div>
+      <Avatar img={img} status={user.workStatus} />
+      <Dropdown title={name} itemList={itemList} />
     </div>
   )
 }
