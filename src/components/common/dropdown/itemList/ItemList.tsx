@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ArrowIcon from "../../../../icons/arrowIcon"
+import ArrowIcon from "../../../icons/arrowIcon"
 import { DropdownItems } from "../../../../types/TimeTracker"
 import SubItemList from "./subItemList/SubItemList"
 

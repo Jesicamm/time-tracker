@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ItemList from "./itemList/ItemList"
-import ArrowIcon from "../../../icons/arrowIcon"
+import ArrowIcon from "../../icons/arrowIcon"
 import { DropdownItems } from "../../../types/TimeTracker"
 
 interface DropdownProps {

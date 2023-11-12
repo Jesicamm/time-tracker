@@ -1,7 +1,7 @@
-import Dropdown from "../../src/components/timeTracker/dropdown/Dropdown"
+import Dropdown from "../../../src/components/common/dropdown/Dropdown"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { DropdownItems } from "../../src/types/TimeTracker"
+import { DropdownItems } from "../../../src/types/TimeTracker"
 
 describe("Dropdown component", () => {
   it("should display dropdown title", () => {

@@ -1,5 +1,6 @@
 import axios from "axios"
-import { UserInfo, WorkStatus, emptyUserInfo } from "../types/TimeTracker"
+import { UserInfo, WorkStatus } from "../types/TimeTracker"
+import { emptyUserInfo } from "../types/empty/emptyTimeTracker"
 
 type JSONRecord = Record<string, unknown>
 export class TimeTracker {

@@ -20,11 +20,3 @@ export type DropdownItems = Item & {
 }
 
 export type WorkEntry = "workEntryIn" | "workEntryOut"
-
-export const emptyUserInfo: UserInfo = {
-  id: "",
-  workStatus: "",
-  firstName: "",
-  lastName: "",
-  workEntryIn: undefined,
-}
