@@ -30,7 +30,7 @@ const ButtonGroup: React.FC<ButtonGroupPropS> = ({
         <Button color="bg-salmon" text="Salir" onClick={onClockOut} />
       </div>
     ),
-    "": <></>,
+    "": <Button color="bg-lightGrey" isDisabled={true} text="" onClick={() => {}} />,
   }
 
   return <>{buttons[status]}</>

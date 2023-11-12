@@ -9,6 +9,7 @@ const Avatar: React.FC<AvatarProps> = ({ img, status }) => {
   const translations: Record<string, string> = {
     online: "teal",
     offline: "salmon",
+    paused: "salmon",
   }
 
   const color: string = translations[status]

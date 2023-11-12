@@ -38,12 +38,13 @@ describe("ButtonGroup component", () => {
     expect(restartButton.className).toMatch(/lightGrey/i)
   })
 
-  it("shouldn't display any button when we have no status", () => {
+  it("should display a disabled button when is loading", () => {
     SUT.render("")
 
     const button = SUT.getButton()
 
-    expect(button).not.toBeInTheDocument()
+    expect(button).toBeInTheDocument()
+    expect(button).toBeDisabled()
   })
 
   describe("Alerts parent component to update workStatus", () => {
