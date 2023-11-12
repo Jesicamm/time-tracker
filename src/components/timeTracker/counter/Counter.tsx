@@ -9,7 +9,7 @@ interface CounterProps {
 const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
   const [isRunning, setIsRunning] = useState(false)
   const [time, setTotal] = useState(0)
-  const totalJournal: string = "08:00:00"
+  const totalWorkHours: string = "08:00:00"
 
   useEffect(() => {
     if (rawDate) {
@@ -63,8 +63,12 @@ const Counter: React.FC<CounterProps> = ({ rawDate, status }) => {
         {hours.toString().padStart(2, "0")}:{minutes.toString().padStart(2, "0")}:
         {seconds.toString().padStart(2, "0")}
       </p>
-      <p>/</p>
-      <p>{totalJournal}</p>
+      {status == "online" && (
+        <>
+          <p>/</p>
+          <p>{totalWorkHours}</p>
+        </>
+      )}
     </div>
   )
 }

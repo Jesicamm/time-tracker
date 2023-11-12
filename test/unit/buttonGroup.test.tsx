@@ -73,6 +73,15 @@ describe("ButtonGroup component", () => {
 
       expect(SUT.onPauseSpy).toHaveBeenCalledTimes(1)
     })
+
+    it("should call onPause event when clicks pause button", async () => {
+      SUT.render("paused")
+
+      const pauseButton = SUT.getStatusButton("Reanudar")
+      await userEvent.click(pauseButton)
+
+      expect(SUT.onRestartSpy).toHaveBeenCalledTimes(1)
+    })
   })
 })
 
