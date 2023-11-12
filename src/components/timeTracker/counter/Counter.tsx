@@ -46,7 +46,7 @@ const Counter: React.FC<CounterProps> = ({ status, workedSeconds, rawDate }) => 
     return result
   }
 
-  const timeData = status == "online" ? getTime(time) : getTime(workedSeconds)
+  const timeData = status == "offline" ? getTime(workedSeconds) : getTime(time)
 
   if (!status) return
   return (
