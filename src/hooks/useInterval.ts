@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
 
 export const useTimeCounter = (isRunning: boolean, rangeTime: number) => {
-  const [time, setTime] = useState(0)
-
-  const setInitialTime = (milliseconds: number) => {
-    setTime(Math.floor(milliseconds / 1000))
-  }
+  const [time, setTime] = useState<number>(0)
+  const [initialTime, setInitialTime] = useState<number>(0)
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout
+    const milliSecondsPassed: number = Date.now() - initialTime
+    setTime(Math.floor(milliSecondsPassed / 1000))
     if (isRunning) {
       intervalId = setInterval(() => {
-        setTime((prevTotal) => prevTotal + 1)
+        const milliSecondsPassed: number = Date.now() - initialTime
+        setTime(Math.floor(milliSecondsPassed / 1000))
       }, rangeTime)
     }
 
@@ -21,5 +21,6 @@ export const useTimeCounter = (isRunning: boolean, rangeTime: number) => {
   return {
     time,
     setInitialTime,
+    setTime,
   }
 }

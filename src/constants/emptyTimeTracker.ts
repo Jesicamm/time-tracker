@@ -1,4 +1,4 @@
-import { UserInfo } from "../TimeTracker"
+import { UserInfo } from "../types/TimeTracker"
 
 export const emptyUserInfo: UserInfo = {
   id: "",

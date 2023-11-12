@@ -1,5 +1,5 @@
 import Dropdown from "../../../src/components/common/dropdown/Dropdown"
-import { act, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { DropdownItems } from "../../../src/types/TimeTracker"
 
@@ -16,10 +16,8 @@ describe("Dropdown component", () => {
     SUT.render()
 
     expect(SUT.getAnItem()).not.toBeInTheDocument()
-    await act(async() =>{
 
-      await userEvent.click(SUT.getTitle())
-    })
+    await userEvent.click(SUT.getTitle())
 
     expect(SUT.getAnItem()).toBeInTheDocument()
   })

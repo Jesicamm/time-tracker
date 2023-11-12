@@ -40,13 +40,14 @@ describe("Counter Component", () => {
 
 class SUT {
   static date = new Date("2023-11-10T12:30:00")
+  static rawDate = new Date("2023-11-10T11:28:59")
 
   static render(status: WorkStatus) {
-    render(<Counter rawDate={this.date} status={status} />)
+    render(<Counter rawDate={this.rawDate} status={status} />)
   }
 
   static getTime(): HTMLElement {
-    return screen.getByText("12:30:00")
+    return screen.getByText("01:01:01")
   }
 
   static getTotalWorkHours(): HTMLElement | null {

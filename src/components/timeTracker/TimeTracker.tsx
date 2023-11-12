@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import Avatar from "./avatar/Avatar"
 import "./timeTracker.css"
 import { TimeTracker as TimeTrackerService } from "../../service/TimeTracker"
-import { UserInfo, WorkStatus } from "../../types/TimeTracker"
+import { UserInfo } from "../../types/TimeTracker"
 import Dropdown from "../common/dropdown/Dropdown"
 import { defaultDropdownItems } from "./constants"
 import ButtonGroup from "./buttonGroup/ButtonGroup"
 import Counter from "./counter/Counter"
-import { emptyUserInfo } from "../../types/empty/emptyTimeTracker"
+import { emptyUserInfo } from "../../constants/emptyTimeTracker"
 
 const TimeTracker: React.FC = () => {
   const [user, setUser] = useState<UserInfo>(emptyUserInfo)
@@ -22,13 +22,15 @@ const TimeTracker: React.FC = () => {
   }
 
   const handleClockOut = async () => {
-    const workStatus: WorkStatus = await TimeTrackerService.clockOut(user.id)
-    setUser({ ...user, workStatus: workStatus })
+    const result = await TimeTrackerService.clockOut(user.id)
+    if (result.workStatus == "") return
+    setUser(result)
   }
 
   const handleClockIn = async () => {
-    const workStatus: WorkStatus = await TimeTrackerService.clockIn(user.id)
-    setUser({ ...user, workStatus: workStatus })
+    const result = await TimeTrackerService.clockIn(user.id)
+    if (result.workStatus == "") return
+    setUser(result)
   }
 
   const handlePause = () => {

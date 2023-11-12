@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { WorkStatus } from "../../../types/TimeTracker"
 import { useTimeCounter } from "../../../hooks/useInterval"
-import {
-  getHoursInMilliseconds,
-  getMilliseconds,
-  getMinutesInMilliSeconds,
-  getSecondsInMilliSeconds,
-} from "../../../helpers/dateFormat"
+import { getHoursFromSeconds, getMinutesFromSeconds, getSeconds } from "../../../helpers/dateFormat"
 
 interface CounterProps {
   status: WorkStatus
@@ -18,13 +13,15 @@ const Counter: React.FC<CounterProps> = ({ status, rawDate }) => {
   const intervalRange: number = 1000
 
   const [isRunning, setIsRunning] = useState(false)
-  const { time, setInitialTime } = useTimeCounter(isRunning, intervalRange)
+  const { time, setInitialTime, setTime } = useTimeCounter(isRunning, intervalRange)
 
   useEffect(() => {
-    if (rawDate) {
-      const milliseconds = getMilliseconds(rawDate)
-      setInitialTime(milliseconds)
+    if (!rawDate) {
+      setTime(0)
+      return
     }
+    const milliseconds = new Date(rawDate).getTime()
+    setInitialTime(milliseconds)
   }, [rawDate])
 
   useEffect(() => {
@@ -42,9 +39,9 @@ const Counter: React.FC<CounterProps> = ({ status, rawDate }) => {
     return statusMap[status]
   }
 
-  const hours = getHoursInMilliseconds(time)
-  const minutes = getMinutesInMilliSeconds(time)
-  const seconds = getSecondsInMilliSeconds(time)
+  const hours = getHoursFromSeconds(time)
+  const minutes = getMinutesFromSeconds(time)
+  const seconds = getSeconds(time)
 
   return (
     <div className="flex flex-row gap-x-1.5 text-xs text-darkGrey">
